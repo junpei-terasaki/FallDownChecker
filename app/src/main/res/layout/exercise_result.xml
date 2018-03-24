@@ -54,7 +54,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/training1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/exercise_list_txt"
@@ -64,7 +64,7 @@
             android:textSize="28sp" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/training2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/exercise_list_txt"
@@ -74,7 +74,7 @@
             android:textSize="28sp" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/training3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/exercise_list_txt"
@@ -84,7 +84,7 @@
             android:textSize="28sp" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/training4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/exercise_list_txt"
@@ -94,7 +94,7 @@
             android:textSize="28sp" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/training5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/exercise_list_txt"

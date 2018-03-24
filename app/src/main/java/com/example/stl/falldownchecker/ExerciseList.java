@@ -18,11 +18,6 @@ public class ExerciseList extends AppCompatActivity{
 
     }
 
-    public void exercise (View view){
-        Intent intent = new Intent(this, Exercise.class);
-        startActivity(intent);
-    }
-
     public void E_result(View view){
         Intent intent = new Intent(this, ExerciseResult.class);
         startActivity(intent);

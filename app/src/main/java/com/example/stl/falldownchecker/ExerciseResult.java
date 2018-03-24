@@ -25,40 +25,47 @@ import javax.mail.internet.MimeMessage;
  */
 
 public class ExerciseResult extends AppCompatActivity{
-
+    MyOpenHelper helper = new MyOpenHelper(this);
+    SQLiteDatabase db = helper.getReadableDatabase();
+    Cursor result_c = db.query("result", new String[] { "level", "training1" }, null,
+            null, null, null, null);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exercise_result);
 
         TextView textview = findViewById(R.id.textView);
+        textview.setText(result_c.getString(0));
 
     }
 
     public void sendMail(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         String send_address = null;
-        MyOpenHelper helper = new MyOpenHelper(this);
-        SQLiteDatabase db = helper.getReadableDatabase();
 
-        Cursor c = db.query("person", new String[] { "name", "address" }, null,
+
+        Cursor person_c = db.query("person", new String[] { "name", "address" }, null,
                 null, null, null, null);
 
-        boolean mov = c.moveToFirst();
+        boolean mov = person_c.moveToFirst();
         while (mov) {
             //TextView textView = new TextView(this);
             //textView.setText(String.format("%s : %s", c.getString(0),
-            //        c.getString(1)));
-            send_address = c.getString(1);
-            mov = c.moveToNext();
+            //        c.getString(1)))
+            send_address = person_c.getString(1);
+            mov = person_c.moveToNext();
         }
-        c.close();
-        db.close();
+        person_c.close();
+
+
 
         final String email = "tera0208soccer@gmail.com";
         final String password = "hknjky28";
         String body = "これがメールの本文になります";
-        String subject = "これがメールの件名になります";
+        String subject = "診断結果\n\n危険度「" + person_c.getString(0) + "」でした。\n\nあなたが行ったトレーニング一覧\n\n" + result_c.getString(1);
+
+        result_c.close();
+        db.close();
         try {
 
             //email と password更新
