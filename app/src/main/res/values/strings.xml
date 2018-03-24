@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">FallDownChecker</string>
+    <string name="btn_check">診断する</string>
+    <string name="btn_entry">登録する</string>
+    <string name="btn_result">診断結果</string>
+    <string name="btn_end_program">終了</string>
+    <string name="btn_exercise">トレーニングへ進む</string>
+    <string name="exercise1">トレーニング1</string>
+    <string name="exercise2">トレーニング2</string>
+    <string name="exercise3">トレーニング3</string>
+    <string name="exercise4">トレーニング4</string>
+    <string name="exercise5">トレーニング5</string>
+    <string name="btn_skip">スキップ</string>
+    <string name="btn_end_exercise">完了</string>
+    <string name="btn_close">終了</string>
+    <string name="item1">項目1</string>
+    <string name="item2">項目2</string>
+    <string name="item3">項目3</string>
+    <string name="item4">項目4</string>
+    <string name="item5">項目5</string>
+    <string name="item6">項目6</string>
+    <string name="item7">項目7</string>
+    <string name="checkbox1" />
+    <string name="checkbox2" />
+    <string name="checkbox3" />
+    <string name="checkbox4" />
+    <string name="checkbox5" />
+    <string name="checkbox6" />
+    <string name="checkbox7" />
+    <string name="level">TextView</string>
 </resources>

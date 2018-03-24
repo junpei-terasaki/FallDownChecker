@@ -1,10 +1,11 @@
 package com.example.stl.falldownchecker;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,4 +14,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void check (View view){
+        Intent intent = new Intent(this, FallDownChecker.class);
+        startActivity(intent);
+    }
+
+    public void entry (View view){
+        Intent intent = new Intent(this, Entry.class);
+        startActivity(intent);
+    }
 }

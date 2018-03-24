@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/exercise_list_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:text="トレーニング内容"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/checker_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="診断結果"
+        android:textSize="28sp" />
+
+    <Button
+        android:id="@+id/btn_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="17dp"
+        android:onClick="sendMail"
+        android:text="@string/btn_close"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/checker_txt"
+        android:layout_alignStart="@+id/checker_txt"
+        android:layout_below="@+id/checker_txt"
+        android:layout_marginTop="19dp"
+        android:text="TextView"
+        android:textSize="28sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="160dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/exercise_list_txt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/exercise_list_txt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/exercise_list_txt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/exercise_list_txt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/exercise_list_txt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            android:textSize="28sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
