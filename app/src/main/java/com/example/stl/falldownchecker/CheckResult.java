@@ -2,7 +2,6 @@ package com.example.stl.falldownchecker;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,8 +17,6 @@ public class CheckResult extends AppCompatActivity{
     MyOpenHelper helper = new MyOpenHelper(this);
     SQLiteDatabase db = helper.getReadableDatabase();
 
-    Cursor c = db.query("result", new String[] {"level"}, null,
-            null, null, null, null);
     /**
      *
      * @param savedInstanceState

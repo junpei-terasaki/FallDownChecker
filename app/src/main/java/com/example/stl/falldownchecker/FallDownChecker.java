@@ -33,15 +33,8 @@ public class FallDownChecker extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.falldown_checker);
-
+        textView.setText(column[column_num]);
     }
-
-    public void result (View view){
-        Intent intent = new Intent(this, CheckResult.class);
-        intent.putExtra("Point", point);
-        startActivity(intent);
-    }
-
 
     public void check_yes(View view){
         textView.setText(column[column_num]);

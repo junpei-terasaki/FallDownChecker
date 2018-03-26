@@ -62,7 +62,7 @@ public class ExerciseResult extends AppCompatActivity{
         final String email = "tera0208soccer@gmail.com";
         final String password = "hknjky28";
         String body = "これがメールの本文になります";
-        String subject = "診断結果\n\n危険度「" + person_c.getString(0) + "」でした。\n\nあなたが行ったトレーニング一覧\n\n" + result_c.getString(1);
+        String subject = "診断結果\n\n危険度「" + person_c.getString(0) + "」でした。\n\nあなたが行ったトレーニング一覧\n\n" + result_c.getString(1) + "\n\n" + result_c.getString(2) + "\n\n" + result_c.getString(3) + "\n\n" + result_c.getString(4) + "\n\n" + result_c.getString(5);
 
         result_c.close();
         db.close();
