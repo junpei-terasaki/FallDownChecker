@@ -25,21 +25,26 @@ import javax.mail.internet.MimeMessage;
  */
 
 public class ExerciseResult extends AppCompatActivity{
-    MyOpenHelper helper = new MyOpenHelper(this);
-    SQLiteDatabase db = helper.getReadableDatabase();
-    Cursor result_c = db.query("result", new String[] { "level", "training1" }, null,
-            null, null, null, null);
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exercise_result);
-
+        MyOpenHelper helper = new MyOpenHelper(this);
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor result_c = db.query("result", new String[] { "level" }, null,
+                null, null, null, null);
         TextView textview = findViewById(R.id.textView);
         textview.setText(result_c.getString(0));
 
     }
 
     public void sendMail(View view) {
+        MyOpenHelper helper = new MyOpenHelper(this);
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor result_c = db.query("result", new String[] { "level", "training1" }, null,
+                null, null, null, null);
         Intent intent = new Intent(this, MainActivity.class);
         String send_address = null;
 

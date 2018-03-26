@@ -15,7 +15,7 @@ import org.w3c.dom.Text;
  */
 
 public class FallDownChecker extends AppCompatActivity{
-    TextView textView = findViewById(R.id.textView);
+
     String[] column = {
             "質問1.よくつまずくことがある",
             "質問2.めまいがおきることがある",
@@ -28,33 +28,36 @@ public class FallDownChecker extends AppCompatActivity{
     Integer point = 0;
     Integer column_num = 0;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.falldown_checker);
+        TextView textView = findViewById(R.id.textView11);
         textView.setText(column[column_num]);
     }
 
     public void check_yes(View view){
-        textView.setText(column[column_num]);
+        TextView textView = findViewById(R.id.textView11);
         point++;
         column_num++;
-        if(column_num == 6){
+        if(column_num == 7){
             Intent intent = new Intent(this, CheckResult.class);
             intent.putExtra("Point", point);
             startActivity(intent);
+        } else {
+            textView.setText(column[column_num]);
         }
     }
 
     public void check_no(View view){
-        textView.setText(column[column_num]);
-        point--;
+        TextView textView = findViewById(R.id.textView11);
         column_num++;
-        if(column_num == 6){
+        if(column_num == 7){
             Intent intent = new Intent(this, CheckResult.class);
             intent.putExtra("Point", point);
             startActivity(intent);
+        } else {
+            textView.setText(column[column_num]);
         }
     }
 

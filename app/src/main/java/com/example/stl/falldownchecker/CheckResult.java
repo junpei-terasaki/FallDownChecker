@@ -4,8 +4,11 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -13,23 +16,23 @@ import android.widget.TextView;
  */
 
 public class CheckResult extends AppCompatActivity{
-
-    MyOpenHelper helper = new MyOpenHelper(this);
-    SQLiteDatabase db = helper.getReadableDatabase();
-
-    /**
-     *
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.check_result);
 
-        TextView level = findViewById(R.id.level);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        MyOpenHelper helper = new MyOpenHelper(this);
+        final SQLiteDatabase db = helper.getReadableDatabase();
+
+        final TextView level = findViewById(R.id.level);
+        final String level_str;
+
         Intent intent = getIntent();
         int point = intent.getIntExtra("Point", 0);
-        String level_str;
+
         if(point >= 5){
             level_str = "高い";
             level.setText(level_str);
@@ -39,12 +42,17 @@ public class CheckResult extends AppCompatActivity{
         }else{
             level_str = "低い";
             level.setText((level_str));
-
         }
+        Button btn_exercise = (Button) findViewById(R.id.btn_exercise);
+        btn_exercise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ContentValues insertValues = new ContentValues();
+                insertValues.put("level", level_str.toString());
+                long id = db.insert("result", level_str.toString(), insertValues);
+            }
+        });
 
-        ContentValues insertValues = new ContentValues();
-        insertValues.put("level", level_str);
-        long id = db.insert("result", level_str, insertValues);
     }
 
     public void exercise(View view){

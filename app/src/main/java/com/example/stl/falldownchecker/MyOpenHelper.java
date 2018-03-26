@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Created by STL on 2018/03/22.
@@ -17,10 +18,6 @@ public class MyOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(
-                "create table person("
-                        + " name text ,"
-                        + " address text"
-                        + ");" +
                 "create table result("
                         + " level text,"
                         + " training1 text,"
@@ -29,8 +26,15 @@ public class MyOpenHelper extends SQLiteOpenHelper {
                         + " training4 text,"
                         + " training5 text"
                         + ");"
-
         );
+        db.execSQL(
+                "create table person("
+                        + " name text not null,"
+                        + " address text"
+                        + ");"
+        );
+
+
     }
 
     @Override
