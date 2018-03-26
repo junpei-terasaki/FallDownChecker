@@ -14,7 +14,7 @@ import android.widget.VideoView;
 
 public class Exercise extends AppCompatActivity{
 
-    /*MyOpenHelper helper = new MyOpenHelper(this);
+    MyOpenHelper helper = new MyOpenHelper(this);
     final SQLiteDatabase db = helper.getWritableDatabase();
     ContentValues insertValues = new ContentValues();
     String[] training = {
@@ -24,7 +24,8 @@ public class Exercise extends AppCompatActivity{
             "トレーニング4",
             "トレーニング5",
     };
-    Integer exercise_num = 1;*/
+    Integer exercise_num = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +36,7 @@ public class Exercise extends AppCompatActivity{
         videoview.start();
     }
 
-    /*public void skip(View view){
+    public void skip(View view){
         training[exercise_num - 1] = null;
         insertValues.put("training" + exercise_num.toString(), training[exercise_num - 1]);
         db.insert("result", null, insertValues);
@@ -56,5 +57,5 @@ public class Exercise extends AppCompatActivity{
             Intent intent = new Intent(this, ExerciseResult.class);
             startActivity(intent);
         }
-    }*/
+    }
 }
