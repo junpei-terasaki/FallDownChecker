@@ -12,7 +12,7 @@ import android.util.Log;
 
 public class MyOpenHelper extends SQLiteOpenHelper {
     public MyOpenHelper(Context context){
-        super(context, "NameAddressDB", null, 1);
+        super(context, "myDB", null, 1);
     }
 
     @Override

@@ -31,26 +31,41 @@ public class ExerciseResult extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exercise_result);
+
         MyOpenHelper helper = new MyOpenHelper(this);
         SQLiteDatabase db = helper.getReadableDatabase();
-        Cursor result_c = db.query("result", new String[] { "level" }, null,
+
+        Cursor result_c = db.query("result", new String[] { "level", "training1", "training2", "training3" ,"training4", "training5"}, null,
                 null, null, null, null);
+        result_c.moveToFirst();
+
         TextView textview = findViewById(R.id.textView);
-        textview.setText(result_c.getString(0));
+        TextView training1 = findViewById(R.id.training1);
+        TextView training2 = findViewById(R.id.training2);
+        TextView training3 = findViewById(R.id.training3);
+        TextView training4 = findViewById(R.id.training4);
+        TextView training5 = findViewById(R.id.training5);
+
+            textview.setText(result_c.getString(0));
+            training1.setText(result_c.getString(1));
+            training2.setText(result_c.getString(2));
+            training3.setText(result_c.getString(3));
+            training4.setText(result_c.getString(4));
+            training5.setText(result_c.getString(5));
+
 
     }
 
     public void sendMail(View view) {
         MyOpenHelper helper = new MyOpenHelper(this);
         SQLiteDatabase db = helper.getReadableDatabase();
-        Cursor result_c = db.query("result", new String[] { "level", "training1" }, null,
+        Cursor result_c = db.query("result", new String[] { "level", "training1", "training2", "training3" ,"training4", "training5" }, null,
                 null, null, null, null);
-        Intent intent = new Intent(this, MainActivity.class);
-        String send_address = null;
-
-
         Cursor person_c = db.query("person", new String[] { "name", "address" }, null,
                 null, null, null, null);
+
+        Intent intent = new Intent(this, MainActivity.class);
+        String send_address = null;
 
         boolean mov = person_c.moveToFirst();
         while (mov) {
@@ -60,15 +75,13 @@ public class ExerciseResult extends AppCompatActivity{
             send_address = person_c.getString(1);
             mov = person_c.moveToNext();
         }
-        person_c.close();
-
-
 
         final String email = "tera0208soccer@gmail.com";
         final String password = "hknjky28";
-        String body = "これがメールの本文になります";
-        String subject = "診断結果\n\n危険度「" + person_c.getString(0) + "」でした。\n\nあなたが行ったトレーニング一覧\n\n" + result_c.getString(1) + "\n\n" + result_c.getString(2) + "\n\n" + result_c.getString(3) + "\n\n" + result_c.getString(4) + "\n\n" + result_c.getString(5);
+        String body = "診断結果\n\n危険度「" + String.valueOf(result_c.getString(0) ) + "」でした\n\nあなたが行ったトレーニング一覧\n\n" + result_c.getString(1) + "\n\n" + result_c.getString(2) + "\n\n" + result_c.getString(3) + "\n\n" + result_c.getString(4) + "\n\n" + result_c.getString(5);
+        String subject = "診断結果";
 
+        person_c.close();
         result_c.close();
         db.close();
         try {

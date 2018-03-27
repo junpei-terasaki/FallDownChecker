@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.VideoView;
 
@@ -22,6 +23,8 @@ public class Exercise extends AppCompatActivity{
             "トレーニング5",
     };
     Integer exercise_num = 1;
+    String num_null = null;
+    ContentValues insertValues = new ContentValues();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,7 @@ public class Exercise extends AppCompatActivity{
         setContentView(R.layout.exercise);
         MyOpenHelper helper = new MyOpenHelper(this);
         final SQLiteDatabase db = helper.getWritableDatabase();
-        ContentValues insertValues = new ContentValues();
+
 
         final VideoView videoview = findViewById(R.id.videoView);
         videoview.setVideoPath("android.resource://" + this.getPackageName() + "/" + R.raw.video2);
@@ -40,36 +43,36 @@ public class Exercise extends AppCompatActivity{
                 videoview.start();
             }
         });
+
+        if(exercise_num == 5){
+            long id = db.insert("result", training[exercise_num - 1], insertValues);
+        }
     }
 
     public void skip(View view){
-        /*MyOpenHelper helper = new MyOpenHelper(this);
+        MyOpenHelper helper = new MyOpenHelper(this);
         final SQLiteDatabase db = helper.getWritableDatabase();
-        ContentValues insertValues = new ContentValues();
 
-        training[exercise_num - 1] = null;
-        insertValues.put("training" + exercise_num.toString(), training[exercise_num - 1]);
-        db.insert("result", null, insertValues);*/
-        exercise_num++;
-        if(exercise_num == 6){
+        insertValues.put("training" + String.valueOf(exercise_num), num_null);
+        if(exercise_num == 5){
             Intent intent = new Intent(this, ExerciseResult.class);
             startActivity(intent);
+        } else{
+            exercise_num++;
         }
     }
 
     public void complete (View view){
-
         MyOpenHelper helper = new MyOpenHelper(this);
         final SQLiteDatabase db = helper.getWritableDatabase();
-        ContentValues insertValues = new ContentValues();
 
-        insertValues.put("training" + exercise_num.toString(), training[exercise_num -1]);
-        db.insert("result",null, insertValues);
-
-        exercise_num++;
-        if(exercise_num == 6){
+        insertValues.put(("training" + String.valueOf(exercise_num)), training[exercise_num - 1]);
+        if(exercise_num == 5){
             Intent intent = new Intent(this, ExerciseResult.class);
             startActivity(intent);
+        }else{
+            exercise_num++;
         }
+
     }
 }

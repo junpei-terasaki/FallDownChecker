@@ -51,6 +51,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginRight="0dp"
         android:layout_marginTop="160dp"
+        android:onClick="sendMail"
         android:orientation="vertical">
 
         <TextView

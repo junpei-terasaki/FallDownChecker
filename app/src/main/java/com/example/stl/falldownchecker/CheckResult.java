@@ -43,16 +43,10 @@ public class CheckResult extends AppCompatActivity{
             level_str = "低い";
             level.setText((level_str));
         }
-        Button btn_exercise = (Button) findViewById(R.id.btn_exercise);
-        btn_exercise.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ContentValues insertValues = new ContentValues();
-                insertValues.put("level", level_str.toString());
-                long id = db.insert("result", level_str.toString(), insertValues);
-            }
-        });
 
+                ContentValues insertValues = new ContentValues();
+                insertValues.put("level", level_str);
+                long id = db.insert("result", level_str, insertValues);
     }
 
     public void exercise(View view){
