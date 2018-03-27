@@ -39,6 +39,7 @@ public class ExerciseResult extends AppCompatActivity{
                 null, null, null, null);
         result_c.moveToFirst();
 
+        Log.d("トレーニング", String.valueOf(result_c.getString(1)));
         TextView textview = findViewById(R.id.textView);
         TextView training1 = findViewById(R.id.training1);
         TextView training2 = findViewById(R.id.training2);
@@ -52,7 +53,7 @@ public class ExerciseResult extends AppCompatActivity{
             training3.setText(result_c.getString(3));
             training4.setText(result_c.getString(4));
             training5.setText(result_c.getString(5));
-
+        result_c.close();
 
     }
 
@@ -63,9 +64,10 @@ public class ExerciseResult extends AppCompatActivity{
                 null, null, null, null);
         Cursor person_c = db.query("person", new String[] { "name", "address" }, null,
                 null, null, null, null);
-
+        result_c.moveToFirst();
         Intent intent = new Intent(this, MainActivity.class);
         String send_address = null;
+
 
         boolean mov = person_c.moveToFirst();
         while (mov) {

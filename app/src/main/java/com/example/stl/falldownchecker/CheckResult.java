@@ -46,7 +46,7 @@ public class CheckResult extends AppCompatActivity{
 
                 ContentValues insertValues = new ContentValues();
                 insertValues.put("level", level_str);
-                long id = db.insert("result", level_str, insertValues);
+                //db.insert("result", level_str, insertValues);
     }
 
     public void exercise(View view){

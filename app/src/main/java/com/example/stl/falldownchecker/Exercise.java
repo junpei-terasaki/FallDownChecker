@@ -44,9 +44,9 @@ public class Exercise extends AppCompatActivity{
             }
         });
 
-        if(exercise_num == 5){
-            long id = db.insert("result", training[exercise_num - 1], insertValues);
-        }
+       // insertValues.put("training1", training[0]);
+        //long id = db.insert("result", training[0], insertValues);
+        //db.close();
     }
 
     public void skip(View view){
@@ -55,6 +55,7 @@ public class Exercise extends AppCompatActivity{
 
         insertValues.put("training" + String.valueOf(exercise_num), num_null);
         if(exercise_num == 5){
+            db.insert("result", null, insertValues);
             Intent intent = new Intent(this, ExerciseResult.class);
             startActivity(intent);
         } else{
@@ -68,6 +69,7 @@ public class Exercise extends AppCompatActivity{
 
         insertValues.put(("training" + String.valueOf(exercise_num)), training[exercise_num - 1]);
         if(exercise_num == 5){
+            db.insert("result", null, insertValues);
             Intent intent = new Intent(this, ExerciseResult.class);
             startActivity(intent);
         }else{
