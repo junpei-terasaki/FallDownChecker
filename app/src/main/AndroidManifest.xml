@@ -22,8 +22,6 @@
         </activity>
         <activity android:name=".CheckResult">
         </activity>
-        <activity android:name=".ExerciseList">
-        </activity>
         <activity android:name=".Exercise">
         </activity>
         <activity android:name=".ExerciseResult">

@@ -16,6 +16,7 @@ import android.widget.TextView;
  */
 
 public class CheckResult extends AppCompatActivity{
+    String level_str;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +25,8 @@ public class CheckResult extends AppCompatActivity{
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        MyOpenHelper helper = new MyOpenHelper(this);
-        final SQLiteDatabase db = helper.getReadableDatabase();
-
         final TextView level = findViewById(R.id.level);
-        final String level_str;
+
 
         Intent intent = getIntent();
         int point = intent.getIntExtra("Point", 0);
@@ -43,14 +41,17 @@ public class CheckResult extends AppCompatActivity{
             level_str = "低い";
             level.setText((level_str));
         }
-
-                ContentValues insertValues = new ContentValues();
-                insertValues.put("level", level_str);
-                //db.insert("result", level_str, insertValues);
+        MyOpenHelper helper = new MyOpenHelper(this);
+        final SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("level", level_str);
+        db.insert("m_person",null, values);
     }
 
-    public void exercise(View view){
-        Intent intent = new Intent(this, Exercise.class);
+    public void main(View view){
+
+        Intent intent = new Intent(this, MainActivity.class);
+        //intent.putExtra("level", level_str);
         startActivity(intent);
     }
 }

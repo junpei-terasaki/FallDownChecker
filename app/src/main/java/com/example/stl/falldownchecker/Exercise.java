@@ -16,24 +16,26 @@ import android.widget.VideoView;
 
 public class Exercise extends AppCompatActivity{
     String[] training = {
-            "トレーニング1",
-            "トレーニング2",
-            "トレーニング3",
-            "トレーニング4",
-            "トレーニング5",
+            "踵おとし",
+            "膝を伸ばした階段おり",
+            "重心移動A",
+            "重心移動B",
+            "台姿勢バランス",
     };
     Integer exercise_num = 1;
     String num_null = null;
-    ContentValues insertValues = new ContentValues();
+    String level = null;
+    ContentValues Values = new ContentValues();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exercise);
-        MyOpenHelper helper = new MyOpenHelper(this);
-        final SQLiteDatabase db = helper.getWritableDatabase();
 
-
+        /*Intent intent = getIntent();
+        level = intent.getStringExtra("level");
+        Values.put("level", level);
+*/
         final VideoView videoview = findViewById(R.id.videoView);
         videoview.setVideoPath("android.resource://" + this.getPackageName() + "/" + R.raw.video2);
         videoview.start();
@@ -43,19 +45,14 @@ public class Exercise extends AppCompatActivity{
                 videoview.start();
             }
         });
-
-       // insertValues.put("training1", training[0]);
-        //long id = db.insert("result", training[0], insertValues);
-        //db.close();
     }
 
     public void skip(View view){
         MyOpenHelper helper = new MyOpenHelper(this);
         final SQLiteDatabase db = helper.getWritableDatabase();
-
-        insertValues.put("training" + String.valueOf(exercise_num), num_null);
+        Values.put("training" + String.valueOf(exercise_num), num_null);
         if(exercise_num == 5){
-            db.insert("result", null, insertValues);
+            db.insert("result", null, Values);
             Intent intent = new Intent(this, ExerciseResult.class);
             startActivity(intent);
         } else{
@@ -66,10 +63,9 @@ public class Exercise extends AppCompatActivity{
     public void complete (View view){
         MyOpenHelper helper = new MyOpenHelper(this);
         final SQLiteDatabase db = helper.getWritableDatabase();
-
-        insertValues.put(("training" + String.valueOf(exercise_num)), training[exercise_num - 1]);
+        Values.put(("training" + String.valueOf(exercise_num)), training[exercise_num - 1]);
         if(exercise_num == 5){
-            db.insert("result", null, insertValues);
+            db.insert("result", null, Values);
             Intent intent = new Intent(this, ExerciseResult.class);
             startActivity(intent);
         }else{

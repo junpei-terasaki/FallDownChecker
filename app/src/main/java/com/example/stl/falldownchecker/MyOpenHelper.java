@@ -19,7 +19,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(
                 "create table result("
-                        + " level text,"
+                        +"_id integer primary key autoincrement not null,"
                         + " training1 text,"
                         + " training2 text,"
                         + " training3 text,"
@@ -33,8 +33,11 @@ public class MyOpenHelper extends SQLiteOpenHelper {
                         + " address text"
                         + ");"
         );
-
-
+        db.execSQL(
+                "create table m_person("
+                    + " level text "
+                    + ");"
+        );
     }
 
     @Override

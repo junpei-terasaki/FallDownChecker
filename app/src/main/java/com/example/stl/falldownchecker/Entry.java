@@ -54,6 +54,8 @@ public class Entry extends AppCompatActivity {
                 insertValues.put("name", name);
                 insertValues.put("address", address);
                 long id = db.insert("person", name, insertValues);
+                Toast.makeText(Entry.this, "登録しました",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -72,6 +74,8 @@ public class Entry extends AppCompatActivity {
                     ContentValues updateValues = new ContentValues();
                     updateValues.put("address", address);
                     db.update("person", updateValues, "name=?", new String[] { name });
+                    Toast.makeText(Entry.this, "更新しました",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -89,6 +93,8 @@ public class Entry extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 } else {
                     db.delete("person", "name=?", new String[] { name });
+                    Toast.makeText(Entry.this, "削除しました",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -101,22 +107,11 @@ public class Entry extends AppCompatActivity {
                 String name = nameText.getText().toString();
                 String address = addressText.getText().toString();
                 db.delete("person", null, null);
-
+                Toast.makeText(Entry.this, "削除しました",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
-        /*Button detaBaseButton = (Button) findViewById(R.id.dataBase);
-        detaBaseButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent dbIntent = new Intent(Entry.this,
-                        ShowDataBase.class);
-                startActivity(dbIntent);
-
-
-            }
-        });*/
     }
 
 

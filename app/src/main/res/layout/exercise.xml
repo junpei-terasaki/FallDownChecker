@@ -4,47 +4,36 @@
     android:layout_height="match_parent">
 
 
-    <FrameLayout
+    <VideoView
+        android:id="@+id/videoView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" />
 
-        <VideoView
-            android:id="@+id/videoView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="center"
-            android:layout_marginBottom="0dp" />
-    </FrameLayout>
-
-    <LinearLayout
+    <Button
+        android:id="@+id/btn_finish"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="0dp"
+        android:layout_weight="1"
+        android:onClick="complete"
+        android:text="次へ"
+        android:textSize="25sp" />
 
-        <Button
-            android:id="@+id/btn_skip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="0dp"
-            android:layout_marginLeft="30dp"
-            android:layout_weight="1"
-            android:onClick="skip"
-            android:text="@string/btn_skip" />
+    <Button
+        android:id="@+id/btn_skip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="bottom"
+        android:layout_weight="1"
+        android:onClick="skip"
+        android:text="@string/btn_skip"
+        android:textSize="25sp" />
 
-        <Button
-            android:id="@+id/btn_finish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="0dp"
-            android:layout_marginRight="30dp"
-            android:layout_weight="1"
-            android:onClick="complete"
-            android:text="@string/btn_end_exercise" />
-
-    </LinearLayout>
 </RelativeLayout>
