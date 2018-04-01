@@ -76,10 +76,12 @@ public class ExerciseResult extends AppCompatActivity{
                 tra_txt[num] = result_c.getString(num);
             }
         }
+
         for(num = 0;num < 5;num++){
-            if(tra_txt[num] != ""){
+            if(tra_txt[num] != "スキップ"){
                 training[tra_num].setText(tra_txt[num]);
                 tra_num++;
+                Log.d("カウント", String .valueOf(tra_num));
             }
         }
         result_c.close();

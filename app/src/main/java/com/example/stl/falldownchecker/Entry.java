@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Properties;
@@ -39,6 +40,9 @@ public class Entry extends AppCompatActivity {
         MyOpenHelper helper = new MyOpenHelper(this);
         final SQLiteDatabase db = helper.getWritableDatabase();
 
+        final Cursor person_c = db.query("person", new String[] { "name", "address" }, null,
+                null, null, null, null);
+
         final EditText nameText = (EditText) findViewById(R.id.editName);
         final EditText addressText = (EditText) findViewById(R.id.editaddress);
 
@@ -56,6 +60,10 @@ public class Entry extends AppCompatActivity {
                 long id = db.insert("person", name, insertValues);
                 Toast.makeText(Entry.this, "登録しました",
                         Toast.LENGTH_SHORT).show();
+                TextView textView = findViewById(R.id.textView7);
+                while(person_c.moveToNext()) {
+                    textView.setText(person_c.getString(0));
+                }
             }
         });
 

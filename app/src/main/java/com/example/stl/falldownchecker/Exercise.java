@@ -18,13 +18,13 @@ import android.widget.VideoView;
 public class Exercise extends AppCompatActivity{
     String[] training = {
             "かかとおとし(20回)",
-            "片足立ち(左右10秒)",
+            "スクワット(10回)",
             "重心移動A(10往復)",
             "重心移動B(10往復)",
-            "台姿勢バランス(左右10秒)",
+            "片足立ち(左右10秒)",
     };
     Integer exercise_num = 1;
-    String num_null = "";
+    String num_null = "スキップ";
     int video_num = 1;
     ContentValues Values = new ContentValues();
 
