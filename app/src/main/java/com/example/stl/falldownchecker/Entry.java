@@ -80,7 +80,7 @@ public class Entry extends AppCompatActivity {
             }
         });
 
-        Button deleteButton = (Button) findViewById(R.id.delete);
+        /*Button deleteButton = (Button) findViewById(R.id.delete);
         deleteButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -97,7 +97,7 @@ public class Entry extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        });*/
 
         Button deleteAllButton = (Button) findViewById(R.id.deleteAll);
         deleteAllButton.setOnClickListener(new View.OnClickListener() {

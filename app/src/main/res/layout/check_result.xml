@@ -21,9 +21,8 @@
         android:id="@+id/level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="110dp"
         android:text="@string/level"
         android:textSize="50sp" />
 
@@ -36,5 +35,16 @@
         android:layout_marginTop="65dp"
         android:text="あなたの転倒危険度"
         android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/level"
+        android:layout_centerHorizontal="true"
+        android:text="トレーニングを行う際は、絶対に無理をしないでください。
+できないと思ったトレーニングは「スキップ」してください。
+最初はマット、椅子、壁などを使うのがおすすめです。"
+        android:textSize="24sp" />
 
 </RelativeLayout>

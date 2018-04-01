@@ -3,10 +3,12 @@ package com.example.stl.falldownchecker;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 /**
@@ -15,15 +17,14 @@ import android.widget.VideoView;
 
 public class Exercise extends AppCompatActivity{
     String[] training = {
-            "かかとおとし",
-            "膝を伸ばした階段降り",
-            "重心移動A",
-            "重心移動B",
-            "台姿勢バランス",
+            "かかとおとし(20回)",
+            "片足立ち(左右10秒)",
+            "重心移動A(10往復)",
+            "重心移動B(10往復)",
+            "台姿勢バランス(左右10秒)",
     };
     Integer exercise_num = 1;
     String num_null = "";
-    String level = null;
     int video_num = 1;
     ContentValues Values = new ContentValues();
 
@@ -31,37 +32,69 @@ public class Exercise extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exercise);
+        TextView textView = findViewById(R.id.textView6);
+        textView.setText(training[exercise_num - 1]);
 
-        /*Intent intent = getIntent();
-        level = intent.getStringExtra("level");
-        Values.put("level", level);
-*/
-        VideoView videoview = findViewById(R.id.videoView);
+        final VideoView videoview = findViewById(R.id.videoView);
         videoview.setVideoURI(Uri.parse("android.resource://" + this.getPackageName() + "/" + R.raw.video1));
         videoview.start();
+        videoview.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                videoview.start();
+            }
+        });
     }
 
     public void skip(View view){
-        VideoView videoview = findViewById(R.id.videoView);
+        final VideoView videoview = findViewById(R.id.videoView);
         video_num++;
         switch (video_num){
             case 2:
                 videoview.setVideoURI(Uri.parse("android.resource://" + this.getPackageName() + "/" + R.raw.video2));
                 videoview.start();
+                videoview.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        videoview.start();
+                    }
+                });
                 break;
             case 3:
                 videoview.setVideoURI(Uri.parse("android.resource://" + this.getPackageName() + "/" + R.raw.video3));
                 videoview.start();
+                videoview.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        videoview.start();
+                    }
+                });
                 break;
             case 4:
                 videoview.setVideoURI(Uri.parse("android.resource://" + this.getPackageName() + "/" + R.raw.video4));
                 videoview.start();
+                videoview.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        videoview.start();
+                    }
+                });
                 break;
             case 5:
                 videoview.setVideoURI(Uri.parse("android.resource://" + this.getPackageName() + "/" + R.raw.video5));
                 videoview.start();
+                videoview.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+                        videoview.start();
+                    }
+                });
                 break;
         }
+
+        TextView textView = findViewById(R.id.textView6);
+
+
         MyOpenHelper helper = new MyOpenHelper(this);
         final SQLiteDatabase db = helper.getWritableDatabase();
 
@@ -72,6 +105,7 @@ public class Exercise extends AppCompatActivity{
             startActivity(intent);
         } else{
             exercise_num++;
+            textView.setText(training[exercise_num - 1]);
         }
     }
 
@@ -82,6 +116,7 @@ public class Exercise extends AppCompatActivity{
             case 2:
                 videoview.setVideoURI(Uri.parse("android.resource://" + this.getPackageName() + "/" + R.raw.video2));
                 videoview.start();
+
                 break;
             case 3:
                 videoview.setVideoURI(Uri.parse("android.resource://" + this.getPackageName() + "/" + R.raw.video3));
@@ -96,6 +131,8 @@ public class Exercise extends AppCompatActivity{
                 videoview.start();
                 break;
         }
+
+        TextView textView = findViewById(R.id.textView6);
 
         MyOpenHelper helper = new MyOpenHelper(this);
         final SQLiteDatabase db = helper.getWritableDatabase();
@@ -107,6 +144,7 @@ public class Exercise extends AppCompatActivity{
             startActivity(intent);
         }else{
             exercise_num++;
+            textView.setText(training[exercise_num - 1]);
         }
 
     }

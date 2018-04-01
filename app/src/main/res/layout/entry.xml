@@ -15,8 +15,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:text="名前とメールアドレスを入力してください。（家族用）"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="ご本人のお名前とご家族のメールアドレスを入力してください"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -25,7 +26,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView1"
-        android:text="名前" />
+        android:text="名前【本人】"
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/editName"
@@ -47,7 +49,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/editName"
-        android:text="メールアドレス" />
+        android:text="メールアドレス【ご家族】"
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/editaddress"
@@ -61,37 +64,27 @@
 
     <Button
         android:id="@+id/insert"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/editaddress"
-        android:text="登録" />
+        android:text="登録"
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/update"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editaddress"
-        android:layout_toRightOf="@+id/insert"
-        android:text="更新" />
-
-    <Button
-        android:id="@+id/delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/update"
-        android:layout_alignBottom="@+id/update"
-        android:layout_toRightOf="@+id/update"
-        android:text="削除" />
+        android:layout_below="@id/insert"
+        android:text="更新"
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/deleteAll"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/delete"
-        android:layout_alignBottom="@+id/delete"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/delete"
-        android:text="すべて削除" />
+        android:layout_below="@id/update"
+        android:text="削除"
+        android:textSize="30sp" />
 
 </RelativeLayout>

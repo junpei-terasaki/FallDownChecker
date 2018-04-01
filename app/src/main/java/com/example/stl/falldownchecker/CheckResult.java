@@ -58,7 +58,6 @@ public class CheckResult extends AppCompatActivity{
     public void main(View view){
 
         Intent intent = new Intent(this, MainActivity.class);
-        //intent.putExtra("level", level_str);
         startActivity(intent);
     }
 }

@@ -25,7 +25,6 @@ import javax.mail.internet.MimeMessage;
  */
 
 public class ExerciseResult extends AppCompatActivity{
-
     String level = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,25 +42,48 @@ public class ExerciseResult extends AppCompatActivity{
         Cursor mPerson_c= db.query("m_person", new String[] { "level" }, null,
                 null, null, null, null);
         TextView textview = findViewById(R.id.textView);
+        TextView[] training = {
+                findViewById(R.id.training1),
+                findViewById(R.id.training2),
+                findViewById(R.id.training3),
+                findViewById(R.id.training4),
+                findViewById(R.id.training5)
+        };
+        String[] tra_txt = new String[5];
+        int num = 0;
+        /*
         TextView training1 = findViewById(R.id.training1);
         TextView training2 = findViewById(R.id.training2);
         TextView training3 = findViewById(R.id.training3);
         TextView training4 = findViewById(R.id.training4);
         TextView training5 = findViewById(R.id.training5);
-
+        */
         while(mPerson_c.moveToNext()){
             textview.setText(mPerson_c.getString(0));
         }
-        while(result_c.moveToNext()) {
+        /*while(result_c.moveToNext()) {
             training1.setText(result_c.getString(0));
             training2.setText(result_c.getString(1));
+         4
             training3.setText(result_c.getString(2));
             training4.setText(result_c.getString(3));
             training5.setText(result_c.getString(4));
+        }*/
+        //for(num = 0; num < 4; num++) {
+        int tra_num= 0;
+        while (result_c.moveToNext()) {
+            for(num = 0;num < 5;num++){
+                tra_txt[num] = result_c.getString(num);
+            }
+        }
+        for(num = 0;num < 5;num++){
+            if(tra_txt[num] != ""){
+                training[tra_num].setText(tra_txt[num]);
+                tra_num++;
+            }
         }
         result_c.close();
         mPerson_c.close();
-
     }
 
     public void sendMail(View view) {
@@ -73,21 +95,37 @@ public class ExerciseResult extends AppCompatActivity{
                 null, null, null, null);
         Cursor mPerson_c= db.query("m_person", new String[]{"level"}, null,
                 null, null, null, null);
-        result_c.moveToFirst();
-        mPerson_c.moveToFirst();
         Intent intent = new Intent(this, MainActivity.class);
         String send_address = null;
+        String name = null;
+        String level = null;
+        String tra_txt1 = null;
+        String tra_txt2 = null;
+        String tra_txt3 = null;
+        String tra_txt4 = null;
+        String tra_txt5 = null;
 
+        while(result_c.moveToNext()){
+            tra_txt1 = result_c.getString(0);
+            tra_txt2 = result_c.getString(1);
+            tra_txt3 = result_c.getString(2);
+            tra_txt4 = result_c.getString(3);
+            tra_txt5 = result_c.getString(4);
 
-        boolean mov = person_c.moveToFirst();
-        while (mov) {
+        }
+
+        while (mPerson_c.moveToNext()){
+            level = mPerson_c.getString(0);
+        }
+
+        while (person_c.moveToNext()) {
             send_address = person_c.getString(1);
-            mov = person_c.moveToNext();
+            name = person_c.getString(0);
         }
 
         final String email = "tera0208soccer@gmail.com";
         final String password = "hknjky28";
-        String body = "診断結果\n\n危険度「" + String.valueOf(mPerson_c.getString(0) ) + "」でした\n\nあなたが行ったトレーニング一覧\n\n" + result_c.getString(0) + "\n\n" + result_c.getString(1) + "\n\n" + result_c.getString(2) + "\n\n" + result_c.getString(3) + "\n\n" + result_c.getString(4);
+        String body = name + "さんの診断結果\n\n危険度「" + level + "」でした\n\n" + name + "さんが行ったトレーニング一覧\n\n" + tra_txt1 + "\n\n" + tra_txt2 + "\n\n" + tra_txt3 + "\n\n" + tra_txt4 + "\n\n" + tra_txt5;
         String subject = "診断結果";
 
         mPerson_c.close();
